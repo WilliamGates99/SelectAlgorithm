@@ -138,6 +138,8 @@ public class MainActivity extends AppCompatActivity {
                 findET.clearFocus();
 
                 if (Integer.parseInt(input) > mainArray.size()) {
+                    foundNumberTV.setVisibility(View.GONE);
+                    foundEmptyTV.setVisibility(View.VISIBLE);
                     foundEmptyTV.setText(R.string.string_main_found_msg_error);
                 } else {
                     foundEmptyTV.setVisibility(View.GONE);
@@ -145,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
 
                     int foundNumber = quickSelect(mainArray, 0,
                             mainArray.size() - 1, Integer.parseInt(input) - 1);
-                    foundNumberTV.setText(foundNumber);
+                    foundNumberTV.setText(String.valueOf(foundNumber));
                 }
             }
         }
