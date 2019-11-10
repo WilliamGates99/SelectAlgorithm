@@ -15,54 +15,54 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/ti_main_layout"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="10dp"
-            android:hint="@string/string_main_input_hint"
-            android:textColorHint="@color/colorInputText"
-            app:boxBackgroundColor="@android:color/transparent"
-            app:boxBackgroundMode="outline"
-            app:boxCornerRadiusBottomEnd="7dp"
-            app:boxCornerRadiusBottomStart="7dp"
-            app:boxCornerRadiusTopEnd="7dp"
-            app:boxCornerRadiusTopStart="7dp"
-            app:boxStrokeColor="@color/colorInputBoxStroke"
-            app:hintEnabled="true"
-            app:hintTextColor="@color/colorInputText">
+            android:layout_marginEnd="15dp">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ti_main_edit"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/ti_main_layout_add"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/open_sans_regular"
-                android:imeOptions="actionDone"
-                android:inputType="numberSigned"
-                android:maxLines="1"
-                android:textColor="@color/colorInputText"
-                android:textDirection="ltr"
-                android:textSize="13sp"
-                android:textStyle="normal" />
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="15dp"
+                android:layout_toStartOf="@+id/button_main_add"
+                android:hint="@string/string_main_input_add_hint"
+                android:textColorHint="@color/colorInputText"
+                app:boxBackgroundColor="@android:color/transparent"
+                app:boxBackgroundMode="outline"
+                app:boxCornerRadiusBottomEnd="7dp"
+                app:boxCornerRadiusBottomStart="7dp"
+                app:boxCornerRadiusTopEnd="7dp"
+                app:boxCornerRadiusTopStart="7dp"
+                app:boxStrokeColor="@color/colorInputBoxStroke"
+                app:hintEnabled="true"
+                app:hintTextColor="@color/colorInputText">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ti_main_edit_add"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/open_sans_regular"
+                    android:imeOptions="actionDone"
+                    android:inputType="numberSigned"
+                    android:maxLines="1"
+                    android:textColor="@color/colorInputText"
+                    android:textDirection="ltr"
+                    android:textSize="13sp"
+                    android:textStyle="normal" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="20dp"
-            android:weightSum="3">
+            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
-                android:layout_width="0dp"
+                android:id="@+id/button_main_add"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="5dp"
-                android:layout_weight="1"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
                 android:backgroundTint="@color/colorButtonAdd"
                 android:fontFamily="@font/open_sans_bold"
                 android:onClick="addOnClick"
@@ -71,20 +71,66 @@
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
-            <com.google.android.material.button.MaterialButton
-                android:layout_width="0dp"
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="20dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/ti_main_layout_find"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_weight="2"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="15dp"
+                android:layout_toStartOf="@+id/button_main_find"
+                android:hint="@string/string_main_input_find_hint"
+                android:textColorHint="@color/colorInputText"
+                app:boxBackgroundColor="@android:color/transparent"
+                app:boxBackgroundMode="outline"
+                app:boxCornerRadiusBottomEnd="7dp"
+                app:boxCornerRadiusBottomStart="7dp"
+                app:boxCornerRadiusTopEnd="7dp"
+                app:boxCornerRadiusTopStart="7dp"
+                app:boxStrokeColor="@color/colorInputBoxStroke"
+                app:hintEnabled="true"
+                app:hintTextColor="@color/colorInputText">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ti_main_edit_find"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/open_sans_regular"
+                    android:imeOptions="actionDone"
+                    android:inputType="numberSigned"
+                    android:maxLines="1"
+                    android:textColor="@color/colorInputText"
+                    android:textDirection="ltr"
+                    android:textSize="13sp"
+                    android:textStyle="normal" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_main_find"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
                 android:backgroundTint="@color/colorButtonSort"
                 android:fontFamily="@font/open_sans_bold"
-                android:onClick="sortOnClick"
-                android:text="@string/string_main_button_sort"
+                android:onClick="findOnClick"
+                android:text="@string/string_main_button_find"
                 android:textColor="@android:color/white"
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -101,6 +147,7 @@
                 android:layout_marginEnd="7.5dp"
                 android:layout_weight="1"
                 app:cardCornerRadius="7dp"
+                app:cardElevation="5dp"
                 app:cardPreventCornerOverlap="true"
                 app:cardUseCompatPadding="true">
 
@@ -118,14 +165,14 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/open_sans_bold"
                         android:gravity="center"
-                        android:text="@string/string_main_initial_title"
+                        android:text="@string/string_main_list_title"
                         android:textAlignment="gravity"
                         android:textColor="@color/colorTitleText"
                         android:textSize="15sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/tv_main_initial_empty"
+                        android:id="@+id/tv_main_list_empty"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="50dp"
@@ -135,7 +182,7 @@
                         android:justificationMode="inter_word"
                         android:lines="3"
                         android:maxLines="3"
-                        android:text="@string/string_main_initial_empty_msg"
+                        android:text="@string/string_main_list_empty_msg"
                         android:textAlignment="gravity"
                         android:textColor="@color/colorListText"
                         android:textSize="13sp"
@@ -144,7 +191,7 @@
                         tools:targetApi="o" />
 
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rv_main_initial"
+                        android:id="@+id/rv_main"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:nestedScrollingEnabled="false"
@@ -161,6 +208,7 @@
                 android:layout_marginStart="7.5dp"
                 android:layout_weight="1"
                 app:cardCornerRadius="7dp"
+                app:cardElevation="5dp"
                 app:cardPreventCornerOverlap="true"
                 app:cardUseCompatPadding="true">
 
@@ -178,14 +226,14 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/open_sans_bold"
                         android:gravity="center"
-                        android:text="@string/string_main_sorted_title"
+                        android:text="@string/string_main_found_title"
                         android:textAlignment="gravity"
                         android:textColor="@color/colorTitleText"
                         android:textSize="15sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/tv_main_sorted_empty"
+                        android:id="@+id/tv_main_found_empty"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="50dp"
@@ -195,7 +243,7 @@
                         android:justificationMode="inter_word"
                         android:lines="3"
                         android:maxLines="3"
-                        android:text="@string/string_main_sorted_empty_msg"
+                        android:text="@string/string_main_found_empty_msg"
                         android:textAlignment="gravity"
                         android:textColor="@color/colorListText"
                         android:textSize="13sp"
@@ -203,13 +251,23 @@
                         android:visibility="visible"
                         tools:targetApi="o" />
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rv_main_sorted"
+                    <TextView
+                        android:id="@+id/tv_main_found_number"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:nestedScrollingEnabled="false"
+                        android:layout_marginTop="50dp"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/open_sans_bold"
+                        android:gravity="center"
+                        android:lines="3"
+                        android:maxLines="1"
+                        android:text="525"
+                        android:textAlignment="gravity"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
                         android:visibility="gone"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+                        tools:ignore="HardcodedText" />
 
                 </LinearLayout>
 

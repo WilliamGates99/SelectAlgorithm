@@ -13,7 +13,6 @@
         android:ellipsize="end"
         android:fontFamily="@font/open_sans_regular"
         android:gravity="center"
-        android:marqueeRepeatLimit="marquee_forever"
         android:maxLines="1"
         android:text="2245"
         android:textAlignment="gravity"

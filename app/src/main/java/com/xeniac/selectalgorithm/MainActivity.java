@@ -18,10 +18,10 @@ import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextInputEditText mainET;
-    private TextView initialEmptyTV, sortedEmptyTV;
+    private TextInputEditText addET, findET;
+    private TextView listEmptyTV, foundEmptyTV, foundNumberTV;
 
-    private RecyclerView initialRV, sortedRV;
+    private RecyclerView mainRV;
     private ArrayList<Integer> mainArray;
 
     @Override
@@ -35,32 +35,34 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void mainInitializer() {
-        mainET = findViewById(R.id.ti_main_edit);
-        initialEmptyTV = findViewById(R.id.tv_main_initial_empty);
-        sortedEmptyTV = findViewById(R.id.tv_main_sorted_empty);
+        addET = findViewById(R.id.ti_main_edit_add);
+        findET = findViewById(R.id.ti_main_edit_find);
+        listEmptyTV = findViewById(R.id.tv_main_list_empty);
+        foundEmptyTV = findViewById(R.id.tv_main_found_empty);
+        foundNumberTV = findViewById(R.id.tv_main_found_number);
 
-        initialRV = findViewById(R.id.rv_main_initial);
-        sortedRV = findViewById(R.id.rv_main_sorted);
+        mainRV = findViewById(R.id.rv_main);
 
         mainArray = new ArrayList<>();
 
         mainCondition();
-        editTextActionDone();
+        addActionDone();
+        findActionDone();
     }
 
     private void mainCondition() {
         if (mainArray.isEmpty()) {
-            initialRV.setVisibility(View.GONE);
-            sortedRV.setVisibility(View.GONE);
+            mainRV.setVisibility(View.GONE);
+            foundNumberTV.setVisibility(View.GONE);
 
-            initialEmptyTV.setVisibility(View.VISIBLE);
-            sortedEmptyTV.setVisibility(View.VISIBLE);
+            listEmptyTV.setVisibility(View.VISIBLE);
+            foundEmptyTV.setVisibility(View.VISIBLE);
         } else {
-            initialEmptyTV.setVisibility(View.GONE);
-            sortedRV.setVisibility(View.GONE);
+            listEmptyTV.setVisibility(View.GONE);
+            foundNumberTV.setVisibility(View.GONE);
 
-            initialRV.setVisibility(View.VISIBLE);
-            sortedEmptyTV.setVisibility(View.VISIBLE);
+            mainRV.setVisibility(View.VISIBLE);
+            foundEmptyTV.setVisibility(View.VISIBLE);
 
             mainRecyclerView();
         }
@@ -68,11 +70,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void mainRecyclerView() {
         MainAdapter initialAdapter = new MainAdapter(this, mainArray);
-        initialRV.setAdapter(initialAdapter);
+        mainRV.setAdapter(initialAdapter);
     }
 
-    private void editTextActionDone() {
-        mainET.setOnEditorActionListener((v, actionId, event) -> {
+    private void addActionDone() {
+        addET.setOnEditorActionListener((v, actionId, event) -> {
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 addOnClick(v);
             }
@@ -80,11 +82,20 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void findActionDone() {
+        findET.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                findOnClick(v);
+            }
+            return false;
+        });
+    }
+
     public void addOnClick(View view) {
-        String input = Objects.requireNonNull(mainET.getText()).toString();
+        String input = Objects.requireNonNull(addET.getText()).toString();
 
         if (TextUtils.isEmpty(input)) {
-            mainET.requestFocus();
+            addET.requestFocus();
             InputMethodManager methodManager =
                     (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
             if (methodManager != null) {
@@ -94,24 +105,52 @@ public class MainActivity extends AppCompatActivity {
             InputMethodManager methodManager =
                     (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
             if (methodManager != null) {
-                methodManager.hideSoftInputFromWindow(mainET.getWindowToken(), 0);
+                methodManager.hideSoftInputFromWindow(addET.getWindowToken(), 0);
             }
-            mainET.setText(null);
-            mainET.clearFocus();
+            addET.setText(null);
+            addET.clearFocus();
 
             mainArray.add(Integer.parseInt(input));
             mainCondition();
-            sortedEmptyTV.setText(R.string.string_main_sorted_msg);
+            foundEmptyTV.setText(R.string.string_main_found_msg);
+            foundEmptyTV.setMaxLines(10);
         }
     }
 
-    public void sortOnClick(View view) {
-        sortedEmptyTV.setVisibility(View.GONE);
-        sortedRV.setVisibility(View.VISIBLE);
+    public void findOnClick(View view) {
+        if (listEmptyTV.getVisibility() != View.VISIBLE) {
+            String input = Objects.requireNonNull(findET.getText()).toString();
+
+            if (TextUtils.isEmpty(input)) {
+                findET.requestFocus();
+                InputMethodManager methodManager =
+                        (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                if (methodManager != null) {
+                    methodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+                }
+            } else {
+                InputMethodManager methodManager =
+                        (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                if (methodManager != null) {
+                    methodManager.hideSoftInputFromWindow(findET.getWindowToken(), 0);
+                }
+                findET.setText(null);
+                findET.clearFocus();
+
+                foundEmptyTV.setVisibility(View.GONE);
+                foundNumberTV.setVisibility(View.VISIBLE);
+
+//                mainArray.add(Integer.parseInt(input));
+//                mainCondition();
+//                foundEmptyTV.setText(R.string.string_main_found_msg);
+//                foundEmptyTV.setMaxLines(10);
+
 
 //        quickSort(mainArray, 0, mainArray.size() - 1);
 
-        MainAdapter sortedAdapter = new MainAdapter(this, mainArray);
-        sortedRV.setAdapter(sortedAdapter);
+//                MainAdapter sortedAdapter = new MainAdapter(this, mainArray);
+//                foundRV.setAdapter(sortedAdapter);
+            }
+        }
     }
 }
