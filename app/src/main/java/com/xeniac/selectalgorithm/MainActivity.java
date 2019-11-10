@@ -140,7 +140,11 @@ public class MainActivity extends AppCompatActivity {
                 if (Integer.parseInt(input) > mainArray.size()) {
                     foundNumberTV.setVisibility(View.GONE);
                     foundEmptyTV.setVisibility(View.VISIBLE);
-                    foundEmptyTV.setText(R.string.string_main_found_msg_error);
+                    foundEmptyTV.setText(R.string.string_main_found_msg_error_greater);
+                } else if (Integer.parseInt(input) <= 0) {
+                    foundNumberTV.setVisibility(View.GONE);
+                    foundEmptyTV.setVisibility(View.VISIBLE);
+                    foundEmptyTV.setText(R.string.string_main_found_msg_error_less);
                 } else {
                     foundEmptyTV.setVisibility(View.GONE);
                     foundNumberTV.setVisibility(View.VISIBLE);
