@@ -137,20 +137,49 @@ public class MainActivity extends AppCompatActivity {
                 findET.setText(null);
                 findET.clearFocus();
 
-                foundEmptyTV.setVisibility(View.GONE);
-                foundNumberTV.setVisibility(View.VISIBLE);
+                if (Integer.parseInt(input) > mainArray.size()) {
+                    foundEmptyTV.setText(R.string.string_main_found_msg_error);
+                } else {
+                    foundEmptyTV.setVisibility(View.GONE);
+                    foundNumberTV.setVisibility(View.VISIBLE);
 
-//                mainArray.add(Integer.parseInt(input));
-//                mainCondition();
-//                foundEmptyTV.setText(R.string.string_main_found_msg);
-//                foundEmptyTV.setMaxLines(10);
-
-
-//        quickSort(mainArray, 0, mainArray.size() - 1);
-
-//                MainAdapter sortedAdapter = new MainAdapter(this, mainArray);
-//                foundRV.setAdapter(sortedAdapter);
+                    int foundNumber = quickSelect(mainArray, 0,
+                            mainArray.size() - 1, Integer.parseInt(input) - 1);
+                    foundNumberTV.setText(foundNumber);
+                }
             }
+        }
+    }
+
+    private int partition(ArrayList<Integer> array, int low, int high) {
+        int pivot = array.get(high);
+        int pivotLocation = low;
+
+        for (int i = low; i <= high; i++) {
+            if (array.get(i) < pivot) {
+                int temp = array.get(i);
+                array.set(i, array.get(pivotLocation));
+                array.set(pivotLocation, temp);
+                pivotLocation++;
+            }
+        }
+
+        int temp = array.get(high);
+        array.set(high, array.get(pivotLocation));
+        array.set(pivotLocation, temp);
+
+        return pivotLocation;
+    }
+
+    private int quickSelect(ArrayList<Integer> array, int low, int high, int k) {
+        int partitionIndex = partition(array, low, high);
+
+        if (partitionIndex == k) {
+            return array.get(partitionIndex);
+        } else if (partitionIndex < k) {
+            return quickSelect(array, partitionIndex + 1, high, k);
+        } else {
+            return quickSelect(array, low, partitionIndex + 1, k);
         }
     }
 }

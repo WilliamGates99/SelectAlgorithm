@@ -107,7 +107,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/open_sans_regular"
                     android:imeOptions="actionDone"
-                    android:inputType="numberSigned"
+                    android:inputType="number"
                     android:maxLines="1"
                     android:textColor="@color/colorInputText"
                     android:textDirection="ltr"
