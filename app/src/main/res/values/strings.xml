@@ -1,0 +1,16 @@
+<resources>
+
+    <!--App Name-->
+    <string name="app_name">Select Algorithm</string>
+
+    <!--Main Activity-->
+    <string name="string_main_input_hint">Enter a custom number</string>
+    <string name="string_main_button_add">ADD</string>
+    <string name="string_main_button_sort">SORT</string>
+    <string name="string_main_initial_empty_msg">Seems like you have not added any data to your list yet</string>
+    <string name="string_main_sorted_empty_msg">An empty list can not be sorted</string>
+    <string name="string_main_sorted_msg">Now you can sort your list by clicking on <font face="@font/open_sans_bold" fgcolor="#00C853"><b>SORT</b></font> button</string>
+    <string name="string_main_initial_title">Initial List</string>
+    <string name="string_main_sorted_title">Sorted List</string>
+
+</resources>

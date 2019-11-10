@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorAccent">#E53935</color>
+    <color name="colorWindowBackground">#FFFFFF</color>
+    <color name="colorInputBoxStroke">#3D3D3D</color>
+    <color name="mtrl_textinput_default_box_stroke_color">#3D3D3D</color>
+    <color name="colorInputText">#3D3D3D</color>
+    <color name="colorButtonAdd">#595959</color>
+    <color name="colorButtonSort">#00C853</color>
+    <color name="colorTitleText">#2D2D2D</color>
+    <color name="colorListText">#3D3D3D</color>
+
+</resources>
