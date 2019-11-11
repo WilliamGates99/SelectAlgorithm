@@ -157,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public static int partition(ArrayList<Integer> array, int left, int right) {
+    private int partition(ArrayList<Integer> array, int left, int right) {
         int x = array.get(right);
         int i = left;
 
