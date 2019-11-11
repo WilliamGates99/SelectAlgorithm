@@ -150,42 +150,50 @@ public class MainActivity extends AppCompatActivity {
                     foundNumberTV.setVisibility(View.VISIBLE);
 
                     int foundNumber = quickSelect(mainArray, 0,
-                            mainArray.size() - 1, Integer.parseInt(input) - 1);
+                            mainArray.size() - 1, Integer.parseInt(input));
                     foundNumberTV.setText(String.valueOf(foundNumber));
                 }
             }
         }
     }
 
-    private int partition(ArrayList<Integer> array, int low, int high) {
-        int pivot = array.get(high);
-        int pivotLocation = low;
+    public static int partition(ArrayList<Integer> array, int left, int right) {
+        int x = array.get(right);
+        int i = left;
 
-        for (int i = low; i <= high; i++) {
-            if (array.get(i) < pivot) {
+        for (int j = left; j <= right - 1; j++) {
+            if (array.get(j) <= x) {
+                //Swapping array[i] and array[j]
                 int temp = array.get(i);
-                array.set(i, array.get(pivotLocation));
-                array.set(pivotLocation, temp);
-                pivotLocation++;
+                array.set(i, array.get(j));
+                array.set(j, temp);
+
+                i++;
             }
         }
 
-        int temp = array.get(high);
-        array.set(high, array.get(pivotLocation));
-        array.set(pivotLocation, temp);
+        //Swapping array[i] and array[r]
+        int temp = array.get(i);
+        array.set(i, array.get(right));
+        array.set(right, temp);
 
-        return pivotLocation;
+        return i;
     }
 
-    private int quickSelect(ArrayList<Integer> array, int low, int high, int k) {
-        int partitionIndex = partition(array, low, high);
+    private int quickSelect(ArrayList<Integer> array, int left, int right, int k) {
 
-        if (partitionIndex == k) {
-            return array.get(partitionIndex);
-        } else if (partitionIndex < k) {
-            return quickSelect(array, partitionIndex + 1, high, k);
-        } else {
-            return quickSelect(array, low, partitionIndex + 1, k);
+        if (k > 0 && k <= right - left + 1) {
+            int pos = partition(array, left, right);
+
+            if (pos - left == k - 1) {
+                return array.get(pos);
+            } else if (pos - left > k - 1) {
+                return quickSelect(array, left, pos - 1, k);
+            } else {
+                return quickSelect(array, pos + 1, right, k - pos + left - 1);
+            }
         }
+
+        return Integer.MAX_VALUE;
     }
 }
